@@ -11,6 +11,10 @@
 # Generated files
 bin/
 gen/
+FastValueHolder/bin/
+FastValueHolder/gen/
+FastValueHolderSample/bin/
+FastValueHolderSample/gen/
 
 # Gradle files
 .gradle/
