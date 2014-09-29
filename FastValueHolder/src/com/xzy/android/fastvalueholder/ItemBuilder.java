@@ -18,6 +18,7 @@ package com.xzy.android.fastvalueholder;
 
 import android.content.Context;
 import android.graphics.Typeface;
+import android.text.method.KeyListener;
 import android.util.SparseArray;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -62,12 +63,14 @@ public class ItemBuilder {
         return mConvertView;
     }
 
+    //ImageView
     public ItemBuilder setImageResource(int viewId, int imageResId) {
         ImageView view = retrieveView(viewId);
         view.setImageResource(imageResId);
         return this;
     }
 
+    //TextView
     public ItemBuilder setText(int viewId, CharSequence text) {
         TextView view = retrieveView(viewId);
         view.setText(text);
@@ -86,22 +89,78 @@ public class ItemBuilder {
         // view.setPaintFlags(view.getPaintFlags() | Paint.SUBPIXEL_TEXT_FLAG);
         return this;
     }
-
+    
+    public ItemBuilder setTextAppearance(int viewId, int resId) {
+        TextView view = retrieveView(viewId);
+        view.setTextAppearance(mContext, resId);
+        return this;
+    }
+    
+    public ItemBuilder setKeyListener(int viewId, KeyListener input) {
+        TextView view = retrieveView(viewId);
+        view.setKeyListener(input);
+        return this;
+    }
+    
+    public ItemBuilder setMaxLines(int viewId, int maxlines) {
+        TextView view = retrieveView(viewId);
+        view.setMaxLines(maxlines);
+        return this;
+    }
+    
+    public ItemBuilder setMinLines(int viewId, int minlines) {
+        TextView view = retrieveView(viewId);
+        view.setMinLines(minlines);
+        return this;
+    }
+    
+    public ItemBuilder setOnEditorActionListener(int viewId, TextView.OnEditorActionListener l) {
+        TextView view = retrieveView(viewId);
+        view.setOnEditorActionListener(l);
+        return this;
+    }
+    
+    public ItemBuilder setSelected(int viewId, boolean isSelected) {
+        TextView view = retrieveView(viewId);
+        view.setSelected(isSelected);
+        return this;
+    }
+    
+    public ItemBuilder setShadowLayer (int viewId, float radius, float dx, float dy, int color) {
+        TextView view = retrieveView(viewId);
+        view.setShadowLayer(radius, dx, dy, color);
+        return this;
+    }
+    
+    public ItemBuilder setSingleLine(int viewId) {
+        TextView view = retrieveView(viewId);
+        view.setSingleLine();
+        return this;
+    }
+    
+    public ItemBuilder setSingleLine(int viewId, boolean singleLine) {
+        TextView view = retrieveView(viewId);
+        view.setSingleLine(singleLine);
+        return this;
+    }
+    
+    //RatingBar
     public ItemBuilder setRating(int viewId, float rating) {
         RatingBar view = retrieveView(viewId);
         view.setRating(rating);
         return this;
     }
 
+    //View
+    public ItemBuilder setEnabled(int viewId, boolean enabled) {
+        View view = retrieveView(viewId);
+        view.setEnabled(enabled);
+        return this;
+    }
+    
     public ItemBuilder setVisibility(int viewId, int visible) {
         View view = retrieveView(viewId);
         view.setVisibility(visible);
-        return this;
-    }
-
-    public ItemBuilder setTextAppearance(int viewId, int resId) {
-        TextView view = retrieveView(viewId);
-        view.setTextAppearance(mContext, resId);
         return this;
     }
 
@@ -111,7 +170,7 @@ public class ItemBuilder {
         return this;
     }
 
-    // use for convertView start
+    // use for convertView 
     public ItemBuilder setOnClickListener(View.OnClickListener listener) {
         mConvertView.setOnClickListener(listener);
         return this;
