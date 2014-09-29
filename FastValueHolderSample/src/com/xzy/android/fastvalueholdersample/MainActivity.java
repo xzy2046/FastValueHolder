@@ -47,11 +47,11 @@ public class MainActivity extends ActionBarActivity {
         setContentView(R.layout.activity_main);
         mListView = (ListView) this.findViewById(R.id.listview);
         mItemAdapter = new ItemAdapter(this);
-        initPicItem(this);
+        initItems(this);
         mListView.setAdapter(mItemAdapter);
     }
 
-    private void initPicItem(Context context) {
+    private void initItems(Context context) {
         for (int i = 0; i < mDrawableId.length; i++) {
             mItemAdapter.addItem(new PicItem(mDrawableId[i], R.layout.pic_items));
         }
@@ -60,6 +60,12 @@ public class MainActivity extends ActionBarActivity {
             itemData.setTitle(String.valueOf(i+100));
             itemData.setComment(String.valueOf(i+1000000));
             mItemAdapter.addItem(new TextItem(itemData));
+        }
+        for (int i = 0; i < 10; i++) {
+            mItemAdapter.addItem(new RatingBarItem(8f, R.layout.ratingbar_item));
+        }
+        for (int i = 0; i < mDrawableId.length; i++) {
+            mItemAdapter.addItem(new PicItem(mDrawableId[i], R.layout.pic_items));
         }
     }
 
