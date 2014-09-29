@@ -45,8 +45,7 @@ public class ItemAdapter extends BaseAdapter {
 
     private boolean mHasReturnedViewTypeCount = false;// 是否已经调用getViewTypeCount
 
-    // TODO 重构SimpleListFragment.java,添加更全面的接口
-    private final int MAX_TYPE_COUNT = 10;
+    private int mMaxTypeCount = 10;
 
     private static final Boolean DEBUG = true;
 
@@ -120,7 +119,7 @@ public class ItemAdapter extends BaseAdapter {
         if (mHasReturnedViewTypeCount) {
             throw new IllegalArgumentException("must call setTypeCount before setAdapter");
         }
-        // mTypeCount = num;
+        mMaxTypeCount = num;
     }
 
     public int indexOfItem(Item<?> item) {
@@ -208,7 +207,7 @@ public class ItemAdapter extends BaseAdapter {
             mHasReturnedViewTypeCount = true;
         }
         // 此处会造成内存额外开销，如需避免，需要在SimpleListFragment.java执行setAdapter之前添加所有item
-        return MAX_TYPE_COUNT;
+        return mMaxTypeCount;
         // return Math.max(1, mItemLayouts.size());
     }
 
