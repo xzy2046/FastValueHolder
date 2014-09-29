@@ -16,6 +16,7 @@
 
 package com.xzy.android.fastvalueholder;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.ColorFilter;
@@ -23,12 +24,19 @@ import android.graphics.PorterDuff;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
+import android.os.Build;
 import android.text.method.KeyListener;
 import android.util.SparseArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Interpolator;
+import android.widget.Adapter;
+import android.widget.AdapterView;
+import android.widget.Checkable;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
@@ -130,6 +138,12 @@ public class ItemBuilder {
         return this;
     }
 
+    public ItemBuilder setTextColorRes(int viewId, int textColorRes) {
+        TextView view = retrieveView(viewId);
+        view.setTextColor(mContext.getResources().getColor(textColorRes));
+        return this;
+    }
+
     public ItemBuilder setTypeface(int viewId, Typeface typeface) {
         TextView view = retrieveView(viewId);
         view.setTypeface(typeface);
@@ -192,6 +206,82 @@ public class ItemBuilder {
         return this;
     }
 
+    public ItemBuilder setNumStars(int viewId, int numStars) {
+        RatingBar view = retrieveView(viewId);
+        view.setNumStars(numStars);
+        return this;
+    }
+
+    public ItemBuilder setOnRatingBarChangeListener(int viewId,
+            RatingBar.OnRatingBarChangeListener listener) {
+        RatingBar view = retrieveView(viewId);
+        view.setOnRatingBarChangeListener(listener);
+        return this;
+    }
+
+    public ItemBuilder setStepSize(int viewId, float stepSize) {
+        RatingBar view = retrieveView(viewId);
+        view.setStepSize(stepSize);
+        return this;
+    }
+
+    // ProgressBar
+    public ItemBuilder setIndeterminateDrawable(int viewId, Drawable d) {
+        ProgressBar view = retrieveView(viewId);
+        view.setIndeterminateDrawable(d);
+        return this;
+    }
+
+    public ItemBuilder setInterpolator(int viewId, Context context, int resId) {
+        ProgressBar view = retrieveView(viewId);
+        view.setInterpolator(mContext, resId);
+        return this;
+    }
+
+    public ItemBuilder setInterpolator(int viewId, Interpolator interpolator) {
+        ProgressBar view = retrieveView(viewId);
+        view.setInterpolator(interpolator);
+        return this;
+    }
+
+    public synchronized ItemBuilder setMax(int viewId, int max) {
+        ProgressBar view = retrieveView(viewId);
+        view.setMax(max);
+        return this;
+    }
+
+    public synchronized ItemBuilder setProgress(int viewId, int progress) {
+        ProgressBar view = retrieveView(viewId);
+        view.setProgress(progress);
+        return this;
+    }
+
+    public ItemBuilder setProgressDrawable(int viewId, Drawable d) {
+        ProgressBar view = retrieveView(viewId);
+        view.setProgressDrawable(d);
+        return this;
+    }
+
+    public synchronized ItemBuilder setSecondaryProgress(int viewId, int secondaryProgress) {
+        ProgressBar view = retrieveView(viewId);
+        view.setSecondaryProgress(secondaryProgress);
+        return this;
+    }
+
+    // Checkable view
+    public ItemBuilder setChecked(int viewId, boolean checked) {
+        Checkable view = (Checkable) retrieveView(viewId);
+        view.setChecked(checked);
+        return this;
+    }
+
+    // Adapter View
+    public ItemBuilder setAdapter(int viewId, Adapter adapter) {
+        AdapterView<Adapter> view = retrieveView(viewId);
+        view.setAdapter(adapter);
+        return this;
+    }
+
     // View
     public ItemBuilder setEnabled(int viewId, boolean enabled) {
         View view = retrieveView(viewId);
@@ -211,9 +301,47 @@ public class ItemBuilder {
         return this;
     }
 
+    public ItemBuilder setTag(int viewId, Object tag) {
+        View view = retrieveView(viewId);
+        view.setTag(tag);
+        return this;
+    }
+
+    public ItemBuilder setTag(int viewId, int key, Object tag) {
+        View view = retrieveView(viewId);
+        view.setTag(key, tag);
+        return this;
+    }
+
+    public ItemBuilder setBackgroundColor(int viewId, int color) {
+        View view = retrieveView(viewId);
+        view.setBackgroundColor(color);
+        return this;
+    }
+
+    public ItemBuilder setBackgroundRes(int viewId, int backgroundRes) {
+        View view = retrieveView(viewId);
+        view.setBackgroundResource(backgroundRes);
+        return this;
+    }
+
     public ItemBuilder setOnClickListener(int viewId, View.OnClickListener listener) {
         View view = retrieveView(viewId);
         view.setOnClickListener(listener);
+        return this;
+    }
+
+    @SuppressLint("NewApi")
+    public ItemBuilder setAlpha(int viewId, float value) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
+            retrieveView(viewId).setAlpha(value);
+        } else {
+            // Pre-honeycomb hack to set Alpha value
+            AlphaAnimation alpha = new AlphaAnimation(value, value);
+            alpha.setDuration(0);
+            alpha.setFillAfter(true);
+            retrieveView(viewId).startAnimation(alpha);
+        }
         return this;
     }
 
