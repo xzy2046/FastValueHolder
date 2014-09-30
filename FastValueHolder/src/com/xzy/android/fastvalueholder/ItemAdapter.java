@@ -34,7 +34,7 @@ import java.util.List;
  */
 public class ItemAdapter extends BaseAdapter {
 
-    protected List<Item> mData = new ArrayList<Item>();
+    protected List<Item> mItems = new ArrayList<Item>();
 
     protected Context mContext;
 
@@ -123,23 +123,23 @@ public class ItemAdapter extends BaseAdapter {
     }
 
     public int indexOfItem(Item<?> item) {
-        return mData.indexOf(item);
+        return mItems.indexOf(item);
     }
 
     public void addItem(final Item<?> item) {
-        mData.add(item);
+        mItems.add(item);
         addToItemLayouts(item);
         notifyDataSetChanged();
     }
 
     public void addItem(int idx, final Item<?> item) {
-        mData.add(idx, item);
+        mItems.add(idx, item);
         addToItemLayouts(item);
         notifyDataSetChanged();
     }
 
     public void addItems(final ArrayList<Item> items) {
-        mData.addAll(items);
+        mItems.addAll(items);
         for (Item<?> item : items) {
             addToItemLayouts(item);
         }
@@ -147,8 +147,8 @@ public class ItemAdapter extends BaseAdapter {
     }
 
     public Item<?> removeItem(int idx) {
-        if (idx < mData.size()) {
-            Item<?> t = mData.remove(idx);
+        if (idx < mItems.size()) {
+            Item<?> t = mItems.remove(idx);
             notifyDataSetChanged();
             return t;
         } else {
@@ -157,7 +157,7 @@ public class ItemAdapter extends BaseAdapter {
     }
 
     public void removeItem(Class<?> clz) {
-        Iterator<Item> iterator = mData.iterator();
+        Iterator<Item> iterator = mItems.iterator();
         boolean find = false;
         while (iterator.hasNext()) {
             if (clz.isInstance(iterator.next())) {
@@ -171,7 +171,7 @@ public class ItemAdapter extends BaseAdapter {
     }
 
     public void clearItems() {
-        mData.clear();
+        mItems.clear();
         // 不清mItemLayouts 是为了让getItemViewType始终得到正确的值
         this.notifyDataSetChanged();
     }
@@ -214,7 +214,7 @@ public class ItemAdapter extends BaseAdapter {
     // 某一种item出现的个数，
     public int getCount(Class<?> clz) {
         int num = 0;
-        for (Item<?> item : mData) {
+        for (Item<?> item : mItems) {
             if (item.getClass().equals(clz)) {
                 num++;
             }
@@ -224,7 +224,7 @@ public class ItemAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return mData.size();
+        return mItems.size();
     }
 
     @Override
@@ -232,7 +232,7 @@ public class ItemAdapter extends BaseAdapter {
         if (position < 0 || position >= getCount()) {
             return null;
         }
-        Item<?> item = mData.get(position);
+        Item<?> item = mItems.get(position);
         return item;
     }
 

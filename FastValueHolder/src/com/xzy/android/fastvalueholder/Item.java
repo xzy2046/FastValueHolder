@@ -52,10 +52,6 @@ public abstract class Item<T> {
      */
     public View getView(View convertView, ViewGroup parent) {
         ItemBuilder builder = getAdapterBuilder(convertView, parent);
-        // if (convert(builder, parent, getData())) {
-        // return builder.getView();
-        // }
-        // return convertView;
         convert(builder, parent, getData());
         return builder.getView();
     }
