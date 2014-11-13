@@ -27,6 +27,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.text.method.KeyListener;
 import android.util.SparseArray;
+import android.view.InflateException;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -63,8 +64,13 @@ public class ItemBuilder {
     public ItemBuilder(Context context, ViewGroup parent, int layoutId) {
         mContext = context;
         mViews = new SparseArray<View>();
-        mConvertView = LayoutInflater.from(mContext).inflate(layoutId, parent, false);
-        mConvertView.setTag(this);
+
+        try {
+            mConvertView = LayoutInflater.from(mContext).inflate(layoutId, parent, false);
+            mConvertView.setTag(this);
+        } catch (InflateException e) {
+            e.printStackTrace();
+        }
         mLayoutId = layoutId;
     }
 
@@ -385,14 +391,12 @@ public class ItemBuilder {
             return (T) mLastView;
         }
         View view = mViews.get(viewId);
-        if (view == null) {
+        if (view == null && mConvertView != null) {
             view = mConvertView.findViewById(viewId);
             mViews.put(viewId, view);
         }
         setLastView(view, viewId);
-        if (mLastView == null)
-            android.util.Log.i("xzy", "!!!!!mLastView is : null layout is: " + mLayoutId);
-        // return (T) view;
+        if (mLastView == null) android.util.Log.i("xzy", "!!!!!mLastView is : null layout is: " + mLayoutId);
         return (T) mLastView;
     }
 
@@ -402,4 +406,7 @@ public class ItemBuilder {
         mLastView = view;
     }
 
+    public int getLayoutId () {
+        return mLayoutId;
+    }
 }

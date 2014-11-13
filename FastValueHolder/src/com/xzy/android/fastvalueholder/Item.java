@@ -70,6 +70,16 @@ public abstract class Item<T> {
         if (convertView == null) {
             return new ItemBuilder(parent.getContext(), parent, mLayoutResId);
         }
-        return (ItemBuilder) convertView.getTag();
+        if (convertView.getTag() != null) {
+            ItemBuilder builder = (ItemBuilder) convertView.getTag();
+            if (builder.getLayoutId() == mLayoutResId) {
+                return builder;
+            } else {
+                //容错
+                return new ItemBuilder(parent.getContext(), parent, mLayoutResId);
+            }
+        }  else {
+            return new ItemBuilder(parent.getContext(), parent, mLayoutResId);
+        }
     }
 }
