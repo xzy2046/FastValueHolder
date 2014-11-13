@@ -1,0 +1,181 @@
+ECLIPSE ANDROID PROJECT IMPORT SUMMARY
+======================================
+
+Manifest Merging:
+-----------------
+Your project uses libraries that provide manifests, and your Eclipse
+project did not explicitly turn on manifest merging. In Android Gradle
+projects, manifests are always merged (meaning that contents from your
+libraries' manifests will be merged into the app manifest. If you had
+manually copied contents from library manifests into your app manifest
+you may need to remove these for the app to build correctly.
+
+Ignored Files:
+--------------
+The following files were *not* copied into the new Gradle project; you
+should evaluate whether these are still needed in your project and if
+so manually move them:
+
+From FastValueHolder:
+* FastValueHolder.iml
+* ic_launcher-web.png
+* proguard-project.txt
+From FastValueHolderSample:
+* .idea/
+* .idea/.name
+* .idea/FastValueHolderSample.iml
+* .idea/compiler.xml
+* .idea/copyright/
+* .idea/copyright/profiles_settings.xml
+* .idea/encodings.xml
+* .idea/misc.xml
+* .idea/modules.xml
+* .idea/scopes/
+* .idea/scopes/scope_settings.xml
+* .idea/vcs.xml
+* .idea/workspace.xml
+* build.gradle
+* fastValueHolder/
+* fastValueHolder/build.gradle
+* fastValueHolder/src/
+* fastValueHolder/src/main/
+* fastValueHolder/src/main/AndroidManifest.xml
+* fastValueHolder/src/main/java/
+* fastValueHolder/src/main/java/com/
+* fastValueHolder/src/main/java/com/xzy/
+* fastValueHolder/src/main/java/com/xzy/android/
+* fastValueHolder/src/main/java/com/xzy/android/fastvalueholder/
+* fastValueHolder/src/main/java/com/xzy/android/fastvalueholder/Item.java
+* fastValueHolder/src/main/java/com/xzy/android/fastvalueholder/ItemAdapter.java
+* fastValueHolder/src/main/java/com/xzy/android/fastvalueholder/ItemBuilder.java
+* fastValueHolder/src/main/res/
+* fastValueHolder/src/main/res/drawable-hdpi/
+* fastValueHolder/src/main/res/drawable-hdpi/ic_launcher.png
+* fastValueHolder/src/main/res/drawable-mdpi/
+* fastValueHolder/src/main/res/drawable-mdpi/ic_launcher.png
+* fastValueHolder/src/main/res/drawable-xhdpi/
+* fastValueHolder/src/main/res/drawable-xhdpi/ic_launcher.png
+* fastValueHolder/src/main/res/drawable-xxhdpi/
+* fastValueHolder/src/main/res/drawable-xxhdpi/ic_launcher.png
+* fastValueHolder/src/main/res/layout/
+* fastValueHolder/src/main/res/layout/activity_main.xml
+* fastValueHolder/src/main/res/values-w820dp/
+* fastValueHolder/src/main/res/values-w820dp/dimens.xml
+* fastValueHolder/src/main/res/values/
+* fastValueHolder/src/main/res/values/dimens.xml
+* fastValueHolder/src/main/res/values/strings.xml
+* fastValueHolderSample/
+* fastValueHolderSample/build.gradle
+* fastValueHolderSample/lint.xml
+* fastValueHolderSample/src/
+* fastValueHolderSample/src/main/
+* fastValueHolderSample/src/main/AndroidManifest.xml
+* fastValueHolderSample/src/main/java/
+* fastValueHolderSample/src/main/java/com/
+* fastValueHolderSample/src/main/java/com/xzy/
+* fastValueHolderSample/src/main/java/com/xzy/android/
+* fastValueHolderSample/src/main/java/com/xzy/android/fastvalueholdersample/
+* fastValueHolderSample/src/main/java/com/xzy/android/fastvalueholdersample/MainActivity.java
+* fastValueHolderSample/src/main/java/com/xzy/android/fastvalueholdersample/PicItem.java
+* fastValueHolderSample/src/main/java/com/xzy/android/fastvalueholdersample/RatingBarItem.java
+* fastValueHolderSample/src/main/java/com/xzy/android/fastvalueholdersample/TextItem.java
+* fastValueHolderSample/src/main/java/com/xzy/android/fastvalueholdersample/TextItemData.java
+* fastValueHolderSample/src/main/res/
+* fastValueHolderSample/src/main/res/anim/
+* fastValueHolderSample/src/main/res/anim/item_animation.xml
+* fastValueHolderSample/src/main/res/anim/list_animation.xml
+* fastValueHolderSample/src/main/res/drawable-hdpi/
+* fastValueHolderSample/src/main/res/drawable-hdpi/animal_0.png
+* fastValueHolderSample/src/main/res/drawable-hdpi/animal_1.png
+* fastValueHolderSample/src/main/res/drawable-hdpi/animal_2.png
+* fastValueHolderSample/src/main/res/drawable-hdpi/animal_3.png
+* fastValueHolderSample/src/main/res/drawable-hdpi/animal_4.png
+* fastValueHolderSample/src/main/res/drawable-hdpi/animal_5.png
+* fastValueHolderSample/src/main/res/drawable-hdpi/animal_6.png
+* fastValueHolderSample/src/main/res/drawable-hdpi/animal_7.png
+* fastValueHolderSample/src/main/res/drawable-hdpi/ic_launcher.png
+* fastValueHolderSample/src/main/res/drawable-mdpi/
+* fastValueHolderSample/src/main/res/drawable-mdpi/ic_launcher.png
+* fastValueHolderSample/src/main/res/drawable-xhdpi/
+* fastValueHolderSample/src/main/res/drawable-xhdpi/ic_launcher.png
+* fastValueHolderSample/src/main/res/drawable-xxhdpi/
+* fastValueHolderSample/src/main/res/drawable-xxhdpi/ic_launcher.png
+* fastValueHolderSample/src/main/res/layout/
+* fastValueHolderSample/src/main/res/layout/activity_main.xml
+* fastValueHolderSample/src/main/res/layout/pic_items.xml
+* fastValueHolderSample/src/main/res/layout/ratingbar_item.xml
+* fastValueHolderSample/src/main/res/layout/text_items.xml
+* fastValueHolderSample/src/main/res/menu/
+* fastValueHolderSample/src/main/res/menu/main.xml
+* fastValueHolderSample/src/main/res/values-w820dp/
+* fastValueHolderSample/src/main/res/values-w820dp/dimens.xml
+* fastValueHolderSample/src/main/res/values/
+* fastValueHolderSample/src/main/res/values/dimens.xml
+* fastValueHolderSample/src/main/res/values/strings.xml
+* gradle/
+* gradle/wrapper/
+* gradle/wrapper/gradle-wrapper.jar
+* gradle/wrapper/gradle-wrapper.properties
+* gradlew
+* gradlew.bat
+* ic_launcher-web.png
+* proguard-project.txt
+* settings.gradle
+
+Replaced Jars with Dependencies:
+--------------------------------
+The importer recognized the following .jar files as third party
+libraries and replaced them with Gradle dependencies instead. This has
+the advantage that more explicit version information is known, and the
+libraries can be updated automatically. However, it is possible that
+the .jar file in your project was of an older version than the
+dependency we picked, which could render the project not compileable.
+You can disable the jar replacement in the import wizard and try again:
+
+android-support-v4.jar => com.android.support:support-v4:21.0.0
+android-support-v7-appcompat.jar => com.android.support:appcompat-v7:19.1.0
+
+Replaced Libraries with Dependencies:
+-------------------------------------
+The importer recognized the following library projects as third party
+libraries and replaced them with Gradle dependencies instead. This has
+the advantage that more explicit version information is known, and the
+libraries can be updated automatically. However, it is possible that
+the source files in your project were of an older version than the
+dependency we picked, which could render the project not compileable.
+You can disable the library replacement in the import wizard and try
+again:
+
+android-support-v7-appcompat => [com.android.support:appcompat-v7:19.1.0]
+
+Moved Files:
+------------
+Android Gradle projects use a different directory structure than ADT
+Eclipse projects. Here's how the projects were restructured:
+
+In FastValueHolder:
+* AndroidManifest.xml => fastValueHolder/src/main/AndroidManifest.xml
+* assets/ => fastValueHolder/src/main/assets/
+* res/ => fastValueHolder/src/main/res/
+* src/ => fastValueHolder/src/main/java/
+In FastValueHolderSample:
+* AndroidManifest.xml => fastValueHolderSample/src/main/AndroidManifest.xml
+* assets/ => fastValueHolderSample/src/main/assets/
+* lint.xml => fastValueHolderSample/lint.xml
+* res/ => fastValueHolderSample/src/main/res/
+* src/ => fastValueHolderSample/src/main/java/
+
+Next Steps:
+-----------
+You can now build the project. The Gradle project needs network
+connectivity to download dependencies.
+
+Bugs:
+-----
+If for some reason your project does not build, and you determine that
+it is due to a bug or limitation of the Eclipse to Gradle importer,
+please file a bug at http://b.android.com with category
+Component-Tools.
+
+(This import summary is for your information only, and can be deleted
+after import once you are satisfied with the results.)
