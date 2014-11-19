@@ -21,6 +21,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.SectionIndexer;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -32,7 +33,7 @@ import java.util.List;
  * @version 0.1
  * @since 2014/09/28
  */
-public class ItemAdapter extends BaseAdapter {
+public class ItemAdapter extends BaseAdapter implements SectionIndexer {
 
     protected List<Item> mItems = new ArrayList<Item>();
 
@@ -56,6 +57,25 @@ public class ItemAdapter extends BaseAdapter {
     public ItemAdapter(Context context) {
         mContext = context;
         mItemLayouts = new ArrayList<ItemLayout>();
+    }
+
+    @Override
+    public Object[] getSections() {
+        return new String[]{"a", "b" , "c"};
+    }
+
+    @Override
+    public int getPositionForSection(int sectionIndex) {
+        if (sectionIndex == 0) return 0;
+        if (sectionIndex == 1) return 5;
+        return 10;
+    }
+
+    @Override
+    public int getSectionForPosition(int position) {
+        if (position < 5) return 0;
+        if (position < 10) return 1;
+        return 2;
     }
 
     // ------------------------START-----------------------

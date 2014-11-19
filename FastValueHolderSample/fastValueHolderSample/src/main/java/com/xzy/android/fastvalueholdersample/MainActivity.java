@@ -49,19 +49,21 @@ public class MainActivity extends ActionBarActivity {
         mItemAdapter = new ItemAdapter(this);
         initItems(this);
         mListView.setAdapter(mItemAdapter);
+        mListView.setFastScrollEnabled(true);
+        mListView.setVerticalScrollBarEnabled(true);
     }
 
     private void initItems(Context context) {
         for (int i = 0; i < mDrawableId.length; i++) {
             mItemAdapter.addItem(new PicItem(mDrawableId[i], R.layout.pic_items));
         }
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 50; i++) {
             TextItemData itemData = new TextItemData();
             itemData.setTitle(String.valueOf(i+100));
             itemData.setComment(String.valueOf(i+1000000));
             mItemAdapter.addItem(new TextItem(itemData));
         }
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 50; i++) {
             mItemAdapter.addItem(new RatingBarItem(8f, R.layout.ratingbar_item));
         }
         for (int i = 0; i < mDrawableId.length; i++) {
